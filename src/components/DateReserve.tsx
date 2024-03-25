@@ -6,8 +6,8 @@ import { Select, MenuItem, TextField} from "@mui/material";
 import { useState } from "react";
 import { Dayjs } from "dayjs";
 
-export default function DateReserve({onDateChange, onHospitalChange, onNameChange, onLastnameChange, onIdChange}
-    :{onDateChange:Function, onHospitalChange:Function,onNameChange:Function,
+export default function DateReserve({onDateChange, onDentistChange, onNameChange, onLastnameChange, onIdChange}
+    :{onDateChange:Function, onDentistChange:Function,onNameChange:Function,
     onLastnameChange:Function, onIdChange:Function}) {
     
     const [name, setName] = useState('')
@@ -15,7 +15,7 @@ export default function DateReserve({onDateChange, onHospitalChange, onNameChang
     const [id, setId] = useState('')
 
     const [bookDate, setBookingDate] = useState<Dayjs|null>(null)
-    const [hospital, setHospital] = useState('Chula')
+    const [dentist, setDentist] = useState('Chula')
     return (
         <div className="bg-green-100 rounded-lg space-y-2
         w-fit px-20 py-5 flex flex-row justify-center grid gap-5">
@@ -26,12 +26,12 @@ export default function DateReserve({onDateChange, onHospitalChange, onNameChang
             <TextField name="Citizen ID" label="Citizen ID" variant="standard"
             value={id} onChange={(e)=>{setId(e.target.value); onIdChange(e.target.value)}}/>
 
-            <Select variant="standard" name="hospital" id="hospital"
-            value={hospital} onChange={(e)=>{setHospital(e.target.value); onHospitalChange(e.target.value)}}
+            <Select variant="standard" name="dentist" id="dentist"
+            value={dentist} onChange={(e)=>{setDentist(e.target.value); onDentistChange(e.target.value)}}
             className="h-[2em] w-[200px]">
-                <MenuItem value="Chula">Chulalongkorn Hospital</MenuItem>
-                <MenuItem value="Rajavithi"> Rajavithi Hospital</MenuItem>
-                <MenuItem value="Thammasat">Thammasat University Hospital</MenuItem>
+                <MenuItem value="Chula">Chulalongkorn Dentist</MenuItem>
+                <MenuItem value="Rajavithi"> Rajavithi Dentist</MenuItem>
+                <MenuItem value="Thammasat">Thammasat University Dentist</MenuItem>
             </Select>
 
             <LocalizationProvider dateAdapter={AdapterDayjs}>

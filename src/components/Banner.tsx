@@ -19,8 +19,8 @@ export default function Banner () {
             fill={true}
             objectFit='cover'/>
             <div className={styles.bannerText}>
-                <h1 className='text-4xl font-medium'>Vaccine Service Center</h1>
-                <h3 className='text-xl font-serif'>ประชาสัมพันธ์การให้บริการวัคซีนในบุคลากรและนักศึกษาที่มีอายุระหว่าง 20-50 ปี</h3>
+                <h1 className='text-4xl font-medium'>Dentist Service Center</h1>
+                <h3 className='text-xl font-serif'>ประชาสัมพันธ์การให้บริการนัดทำฟัน</h3>
             </div>
             {
                 session? <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-300 text-xl'>Welcome {session.user?.name}</div>
@@ -29,8 +29,8 @@ export default function Banner () {
             <button className='bg-white text-lime-600 border border-lime-600
                 font-semibold py-2 px-2 m-2 rounded z-30 absolute bottom-0 right-0
                 hover:bg-lime-600 hover:text-white hover:border-transparent'
-                onClick={(e)=>{e.stopPropagation(); router.push('/hospital')}}>
-                Select Hospital
+                onClick={(e)=>{e.stopPropagation(); router.push('/dentist')}}>
+                Select Dentist
             </button>
         </div>
     );

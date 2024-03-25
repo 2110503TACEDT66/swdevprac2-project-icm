@@ -16,16 +16,16 @@ export default function Booking() {
 
     const urlParams = useSearchParams()
     const hid = urlParams.get('id')
-    const hospital = urlParams.get('name')
+    const dentist = urlParams.get('name')
 
     const dispatch = useDispatch<AppDispatch>()
     const makeBooking = () => {
-        if(name && lastname && id && vacHospital && vacDate) {
+        if(name && lastname && id && vacDentist && vacDate) {
             const item:BookingItem ={
                 name: name,
                 surname: lastname,
                 id: id,
-                hospital: vacHospital,
+                dentist: vacDentist,
                 bookDate: dayjs(vacDate).format("YYYY/MM/DD"),
             }
             dispatch(addBooking(item))
@@ -33,7 +33,7 @@ export default function Booking() {
     }
 
     const [vacDate,setVacDate] = useState<Dayjs|null>(null)
-    const [vacHospital,setVacHospital] = useState<string>('Chula')
+    const [vacDentist,setVacDentist] = useState<string>('Chula')
     const [name, setName] = useState('Name')
     const [lastname, setLastname] = useState('Lastname')
     const [id, setId] = useState('Citizen ID')
@@ -55,18 +55,18 @@ export default function Booking() {
                 <tr><td>Member Since</td><td>{createdAt.toString()}</td></tr>
                 </tbody></table> */}
 
-            <div className='text-3xl font-medium text-black'>Vaccine Booking </div>
+            <div className='text-3xl font-medium text-black'>Dentist Booking </div>
             <div className="w-fit space-y-2">
                 <div className="text-md text-left text-gray-600">Create your booking</div>
                 <DateReserve onDateChange={(value:Dayjs)=>{setVacDate(value)}}
-                onHospitalChange={(value:string)=>{setVacHospital(value)}}
+                onDentistChange={(value:string)=>{setVacDentist(value)}}
                 onNameChange={(value:string)=>{setName(value)}}
                 onLastnameChange={(value:string)=>{setLastname(value)}}
                 onIdChange={(value:string)=>{setId(value)}}/>
             </div>
             <button className="block rounded-md bg-lime-400 hover:bg-lime-600 px-3 py-2 shadow-sm"
              id="Book Vaccine" name="Book Vaccine" onClick={makeBooking}>
-                Book Vaccine
+                Book Dentist
             </button>
         </main>
     )

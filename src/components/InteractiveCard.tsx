@@ -4,7 +4,7 @@ import React from "react";
 export default function InteractiveCard( { children, contentName}
     :{ children: React.ReactNode, contentName: string}){
 
-    function onHospitalSelected() {
+    function onDentistSelected() {
         //alert("You select " + contentName)
     }
 
@@ -25,7 +25,7 @@ export default function InteractiveCard( { children, contentName}
 
     return (
         <div className='w-full h-[300px] rounded-lg shadow-lg bg-white' 
-        onClick={ ()=>onHospitalSelected()}
+        onClick={ ()=>onDentistSelected()}
         onMouseOver={ (e)=>onCardMouseAction(e)}
         onMouseOut={ (e)=>onCardMouseAction(e)}>
             { children}

@@ -16,11 +16,11 @@ export default function BookingList() {
         {
             bookItems.map((bookingItem)=>(
                 <div className="bg-slate-200 rounded px-5 mx-5 py-2 my-2"
-                key={bookingItem.hospital}>
+                key={bookingItem.dentist}>
                     <div className="text-xl text-black">{bookingItem.name}</div>
                     <div className="text-xl text-black">{bookingItem.surname}</div>
                     <div className="text-xl text-black">Citizen ID: {bookingItem.id}</div>
-                    <div className="text-xl text-black">Hospital: {bookingItem.hospital}</div>
+                    <div className="text-xl text-black">Dentist: {bookingItem.dentist}</div>
                     <div className="text-xl text-black">Booking Date: {bookingItem.bookDate}</div>
 
                     <button className="block rounded-md bg-red-400 hover:bg-red-600 px-3 py-2 shadow-sm"

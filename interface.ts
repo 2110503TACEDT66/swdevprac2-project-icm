@@ -1,27 +1,24 @@
-export interface HospitalItem {
+export interface DentistItem {
     _id: string,
     name: string,
-    address: string,
-    district: string,
-    province: string,
-    postalcode: string,
-    tel: string,
+    years_of_experience: string,
+    area_of_expertise: string,
     picture: string,
     __v: number,
     id: string
   }
   
-export interface HospitalJson {
+export interface DentistJson {
     success: boolean,
     count: number,
     pagination: Object,
-    data: HospitalItem[]
+    data: DentistItem[]
   }
 
 export interface BookingItem {
     name: string;
     surname: string;
     id: string;
-    hospital: string;
+    dentist: string;
     bookDate: string;
   }
