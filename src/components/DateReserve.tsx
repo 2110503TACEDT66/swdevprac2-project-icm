@@ -21,17 +21,12 @@ export default function DateReserve({onDateChange, onDentistChange, onNameChange
         w-fit px-20 py-5 flex flex-row justify-center grid gap-5">
             <TextField name="Name" label="Name" variant="standard"
             value={name} onChange={(e)=>{setName(e.target.value); onNameChange(e.target.value)}}/>
-            <TextField name="Lastname" label="Lastname" variant="standard"
-            value={lastname} onChange={(e)=>{setLastname(e.target.value); onLastnameChange(e.target.value)}}/>
-            <TextField name="Citizen ID" label="Citizen ID" variant="standard"
-            value={id} onChange={(e)=>{setId(e.target.value); onIdChange(e.target.value)}}/>
-
             <Select variant="standard" name="dentist" id="dentist"
             value={dentist} onChange={(e)=>{setDentist(e.target.value); onDentistChange(e.target.value)}}
             className="h-[2em] w-[200px]">
-                <MenuItem value="Chula">Chulalongkorn Dentist</MenuItem>
-                <MenuItem value="Rajavithi"> Rajavithi Dentist</MenuItem>
-                <MenuItem value="Thammasat">Thammasat University Dentist</MenuItem>
+                <MenuItem value="Hank Schrader">Hank Schrader</MenuItem>
+                <MenuItem value="Saul Goodman">Saul Goodman</MenuItem>
+                <MenuItem value="Walter White">Walter White</MenuItem>
             </Select>
 
             <LocalizationProvider dateAdapter={AdapterDayjs}>
