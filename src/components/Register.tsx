@@ -1,61 +1,53 @@
 'use client'
-import { useRef, useState, useEffect} from "react"
+import { useState } from 'react';
+import userLogin from '@/libs/userLogIn';
+import userRegister from '@/libs/userRegister';
+import Image from 'next/image';
 
 export default function Register() {
-    const firstname = useRef("");
-    const lastname = useRef("");
-    const email = useRef("");
-    const tel = useRef("");
-    const password = useRef("");
-    const confirmpassword = useRef("");
+    const [reg, setreg] = useState({
+        name: '',
+        tel: '',
+        email: '',
+        password: ''
+    });
 
-    const [errMsg, setErrMsg] = useState(false);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setreg({ ...reg, [e.target.name]: e.target.value });
+    };
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    
+    const userRegis = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (password.current !== confirmpassword.current) {
-            setErrMsg(true);
-            return;
-        }
-        setErrMsg(false);
-    }
-
-   
+        await userRegister(reg.name, reg.tel, reg.email, reg.password);
+        window.location.href = '/';
+    };
 
     return (
-        <>
-            <label className="text-lime-500 font-black text-5xl mb-8">Create your account</label>
-
-            <div className="h-12 w-[80%] mb-6 border border-slate-500 font-sans divide-x divide-slate-500">
-                <input required placeholder="First Name" type="text" className="h-[100%] w-[50%] p-2 text-black"
-                onChange={(e)=>{firstname.current = e.target.value}}/>
-                <input required placeholder="Last Name" type="text" className="h-full w-[50%] p-2 text-black"
-                onChange={(e)=>{lastname.current = e.target.value}}/>
-            </div>
-
-            <input required className=" border border-slate-500 mb-6 p-2 font-sans w-[80%] h-12 text-black" placeholder="Tel" type="text"
-            onChange={(e)=>{tel.current = e.target.value}}/>
-                        <input required className=" border border-slate-500 mb-6 p-2 font-sans w-[80%] h-12 text-black" placeholder="Email" type="text"
-            onChange={(e)=>{email.current = e.target.value}}/>
-            
-            <div className="h-12 w-[80%] mb-10 border border-slate-500 font-sans divide-x divide-slate-500">
-                <input required placeholder="Password" type="password" className="h-[100%] w-[50%] p-2 text-black"
-                onChange={(e)=>{password.current = e.target.value}}/>
-                <input required placeholder="Confirm Password" type="password" className="h-full w-[50%] p-2 text-black"
-                onChange={(e)=>{confirmpassword.current = e.target.value}}/>
-            </div>
-
-            <div className="w-[80%] h-auto flex items-center">
-                
-            <button type="submit" className="w-[45%] h-[100%] my-5 mx-[5%] text-xl text-slate-900 font-bold font-sans bg-lime-500 hover:bg-slate-800 hover:text-lime-400 rounded-2xl"
-            onSubmit={()=>onSubmit}>Sign Up</button>
-            
-            {
-                errMsg && <p className="text-red-700 text-sm mt-5 mx-5">the password doesn't not match.</p> 
-            }
-            
-            </div>
-        </>
-    )
-   
+        <main className="bg-white m-5 p-5 rounded-xl shadow-md w-2/3 mx-auto">
+        <form onSubmit={userRegis} className="flex justify-center">
+            <table className="w-1/3">
+                <tbody>
+                    <tr className='h-10'>
+                        <td className="text-left pr-4"><label htmlFor="name" className="text-black font-serif">Name: </label></td>
+                        <td><input type="text" required id="name" name="name" placeholder="Name" className="input-field" onChange={handleChange} /></td>
+                    </tr>
+                    <tr className='h-10'>
+                        <td className="text-left pr-4"><label htmlFor="tel" className="text-black font-serif">Tel: </label></td>
+                        <td><input type="text" required id="tel" name="tel" placeholder="Tel" className="input-field" onChange={handleChange} /></td>
+                    </tr>
+                    <tr className='h-10'>
+                        <td className="text-left pr-4"><label htmlFor="email" className="text-black font-serif">Email: </label></td>
+                        <td><input type="text" required id="email" name="email" placeholder="Email" className="input-field" onChange={handleChange} /></td>
+                    </tr>
+                    <tr className='h-10'>
+                        <td className="text-left pr-4"><label htmlFor="password" className="text-black font-serif">Password:</label></td>
+                        <td><input type="password" required id="password" name="password" placeholder="Password" className="input-field" onChange={handleChange} /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded-xl">Register</button>
+        </form>
+    </main>
+    );
 }
