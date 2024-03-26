@@ -1,6 +1,5 @@
 'use client'
 import { useRef, useState, useEffect} from "react"
-import userRegister from "@/libs/userRegister";
 
 export default function Register() {
     const firstname = useRef("");
