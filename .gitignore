@@ -6,6 +6,9 @@
 .pnp.js
 
 # testing
+/__tests__
+jest.config.js
+jest.setup.js
 /coverage
 
 # next.js
